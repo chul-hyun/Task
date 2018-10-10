@@ -22,6 +22,7 @@ const TaskItemListStyled = styled.div`
   background: linear-gradient(-45deg, #f0f0f0, #e0e0e0);
   box-shadow: 0px 0px 6px #000000;
   border-radius: 0px 0px 3px 3px;
+  overflow-y: auto;
 `;
 
 export interface Props {
