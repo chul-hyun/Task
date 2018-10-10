@@ -2,12 +2,10 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { Plus } from 'react-feather';
 
-interface Props {}
-
 const Wrapper = styled.div`
   display: flex;
-  height: 100%;
-  width: 100%;
+  width: 364px;
+  height: 47px;
   border-radius: 3px;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   background-color: #fff;
