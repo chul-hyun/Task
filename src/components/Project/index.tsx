@@ -5,11 +5,14 @@ import TaskBoxList, { TaskBoxPropsList } from './TaskBoxList';
 import NavItemList, { NavItemPropsList } from './NavItemList';
 
 const Wrapper = styled.div`
-  display: grid;
+  display: flex;
+  flex-flow: column;
+  background: linear-gradient(-45deg, #21252c, #2e333d);
+  height: 100vh;
 `;
 
 const HeaderStyled = styled.header`
-  height: 117px;
+  padding: 28px 0px;
 `;
 
 const MainStyled = styled.main`
@@ -18,6 +21,7 @@ const MainStyled = styled.main`
   margin-right: 68px;
   margin-bottom: 63px;
   overflow: auto;
+  flex: 1;
 `;
 
 const FooterStyled = styled.footer``;

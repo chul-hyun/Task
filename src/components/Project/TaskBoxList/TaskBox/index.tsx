@@ -4,7 +4,10 @@ import TaskHeader from './TaskHeader';
 import TaskItemList, { Tasks } from './TaskItemList/index';
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-flow: column;
   width: 335px;
+  height: 100%;
 `;
 
 const TaskHeaderStyled = styled.div`
@@ -18,7 +21,7 @@ const TaskItemListStyled = styled.div`
   padding-left: 22px;
   padding-right: 22px;
   padding-top: 30px;
-  height: 596px;
+  flex: 1;
   background: linear-gradient(-45deg, #f0f0f0, #e0e0e0);
   box-shadow: 0px 0px 6px #000000;
   border-radius: 0px 0px 3px 3px;

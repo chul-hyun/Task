@@ -6,12 +6,14 @@ import TaskBoxInput from './TaskBoxInput';
 const Wrapper = styled.div`
   overflow-x: scroll;
   white-space: nowrap;
+  height: 100%;
 `;
 
 const ChildrenItemStyled = styled.div`
   display: inline-block;
   margin-right: 120px;
   vertical-align: top;
+  height: 100%;
 `;
 
 export type TaskBoxPropsList = (TaskBoxProps & { key: string })[];

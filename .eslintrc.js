@@ -40,5 +40,6 @@ module.exports = {
         //<></> 를 쓰기 위해 임시책
         'no-multi-str': 'off',
         "react/prefer-stateless-function": ["error", { "ignorePureComponents": true }],
+        "react/prop-types": 'off',
     },
 };
