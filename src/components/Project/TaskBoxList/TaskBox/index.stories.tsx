@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { color, number, text, array } from '@storybook/addon-knobs/react';
+import { color, text, array } from '@storybook/addon-knobs/react';
 import styled from 'styled-components';
 import TaskBox from './index';
 

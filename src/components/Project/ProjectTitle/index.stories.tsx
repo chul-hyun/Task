@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { color, number, text, array } from '@storybook/addon-knobs/react';
+import { text } from '@storybook/addon-knobs/react';
 import styled from 'styled-components';
-import { string } from 'prop-types';
 import ProjectTitle from './index';
 
 const Wrapper = styled.div`

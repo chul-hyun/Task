@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import NavItem, { Props as NavItemProps } from './NavItem';
 import StyledLine from '../StyledLine';
 
 const Wrapper = styled.div`
@@ -8,24 +9,17 @@ const Wrapper = styled.div`
 
 const ItemListStyled = styled.div`
   display: flex;
-  height: 87px;
 `;
 
-const ItemStyled = styled.div`
-  display: flex;
-  height: 87px;
-  flex: 1;
-  font-size: 20px;
-  color: #646464;
-  justify-content: center;
-  align-items: center;
-`;
+export type NavItemPropsList = (NavItemProps & { key: string })[];
 
-export interface Props {}
+export interface Props {
+  navItemPropsList: NavItemPropsList;
+}
 
 export interface State {}
 
-export default class BottomNav extends React.Component<Props, State> {
+export default class NavItemList extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
@@ -33,14 +27,14 @@ export default class BottomNav extends React.Component<Props, State> {
   }
 
   public render() {
+    const { navItemPropsList } = this.props;
     return (
       <Wrapper>
         <StyledLine />
         <ItemListStyled>
-          <ItemStyled>Home</ItemStyled>
-          <ItemStyled>Dashboard</ItemStyled>
-          <ItemStyled>My Page</ItemStyled>
-          <ItemStyled>Setting</ItemStyled>
+          {navItemPropsList.map(navItemProps => (
+            <NavItem {...navItemProps} />
+          ))}
         </ItemListStyled>
       </Wrapper>
     );
