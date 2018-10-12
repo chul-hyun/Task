@@ -7,7 +7,7 @@ import NavItemList, { NavItemPropsList } from './NavItemList';
 const Wrapper = styled.div`
   display: flex;
   flex-flow: column;
-  background: linear-gradient(-45deg, #21252c, #3b414e);
+  background: linear-gradient(to right, #8e44ad, #c0392b);
   height: 100vh;
 `;
 

@@ -5,8 +5,8 @@ const Wrapper = styled.div`
   display: flex;
   width: 100%;
   height: 57px;
-  background: linear-gradient(-45deg, #ffffff, #f2f2f2);
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.16);
   border-radius: 3px;
 `;
 

@@ -6,7 +6,7 @@ import TaskItemList, { Tasks } from './TaskItemList/index';
 const Wrapper = styled.div`
   display: flex;
   flex-flow: column;
-  width: 320px;
+  width: 295px;
   height: 100%;
 `;
 
@@ -16,13 +16,15 @@ const TaskHeaderStyled = styled.div`
 `;
 
 const TaskItemListStyled = styled.div`
-  margin: 0px 5px;
   padding-left: 22px;
   padding-right: 22px;
   padding-top: 30px;
   flex: 1;
-  background: linear-gradient(-45deg, #f0f0f0, #e0e0e0);
-  box-shadow: 0px 0px 6px #000000;
+  background: linear-gradient(
+    -45deg,
+    rgba(240, 240, 240, 0.5),
+    rgba(224, 224, 224, 0.8)
+  );
   border-radius: 0px 0px 3px 3px;
   overflow-y: auto;
 `;

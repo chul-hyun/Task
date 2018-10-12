@@ -13,8 +13,7 @@ const Wrapper = styled.div`
   height: 100%;
   width: 100%;
   border-radius: 3px;
-  border: 1px solid ${props => props.color};
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 0px 6px ${props => props.color};
   background-color: #fff;
 `;
 

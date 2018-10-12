@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 
 const ChildrenItemStyled = styled.div`
   display: inline-block;
-  margin-right: 70px;
+  margin-right: 65px;
   vertical-align: top;
   height: 100%;
 `;

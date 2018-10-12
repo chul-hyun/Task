@@ -18,17 +18,17 @@ setOptions({
    * show story component as full screen
    * @type {Boolean}
    */
-  goFullScreen: false,
+  goFullScreen: true,
   /**
    * display panel that shows a list of stories
    * @type {Boolean}
    */
-  showStoriesPanel: true,
+  showStoriesPanel: false,
   /**
    * display panel that shows addon configurations
    * @type {Boolean}
    */
-  showAddonPanel: true,
+  showAddonPanel: false,
   /**
    * display floating search box to search through stories
    * @type {Boolean}

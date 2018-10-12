@@ -5,9 +5,8 @@ import TaskInput from './TaskInput';
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
-  background-color: #fafafa;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 3px 3px 0px 0px;
 `;
 
 const HeaderWrapper = styled.div`
