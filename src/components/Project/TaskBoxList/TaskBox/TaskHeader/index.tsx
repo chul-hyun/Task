@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   height: 100%;
   background-color: #fafafa;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-  border-radius: 3px 3px 0px 0px;
+  border-radius: 3px;
 `;
 
 const HeaderWrapper = styled.div`
@@ -34,7 +34,7 @@ const TitleStyled = styled.div`
   display: flex;
   height: 100%;
   flex: 1;
-  font-size: 25px;
+  font-size: 20px;
   padding: 0px 0px 0px 21px;
   align-items: center;
 `;

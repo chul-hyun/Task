@@ -7,19 +7,17 @@ import NavItemList, { NavItemPropsList } from './NavItemList';
 const Wrapper = styled.div`
   display: flex;
   flex-flow: column;
-  background: linear-gradient(-45deg, #21252c, #2e333d);
+  background: linear-gradient(-45deg, #21252c, #3b414e);
   height: 100vh;
 `;
 
 const HeaderStyled = styled.header`
-  padding: 28px 0px;
+  padding: 15px 0px;
 `;
 
 const MainStyled = styled.main`
-  margin-top: 37px;
-  margin-left: 68px;
-  margin-right: 68px;
-  margin-bottom: 63px;
+  margin-top: 20px;
+  margin-bottom: 40px;
   overflow: auto;
   flex: 1;
 `;

@@ -7,11 +7,13 @@ const Wrapper = styled.div`
   overflow-x: scroll;
   white-space: nowrap;
   height: 100%;
+  padding-left: 68px;
+  padding-right: 68px;
 `;
 
 const ChildrenItemStyled = styled.div`
   display: inline-block;
-  margin-right: 120px;
+  margin-right: 70px;
   vertical-align: top;
   height: 100%;
 `;

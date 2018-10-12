@@ -6,13 +6,12 @@ import TaskItemList, { Tasks } from './TaskItemList/index';
 const Wrapper = styled.div`
   display: flex;
   flex-flow: column;
-  width: 335px;
+  width: 320px;
   height: 100%;
 `;
 
 const TaskHeaderStyled = styled.div`
   position: relative;
-  height: 146px;
   z-index: 2;
 `;
 

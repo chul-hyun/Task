@@ -7,7 +7,7 @@ const Wrapper = styled.div`
 `;
 
 const TitleStyled = styled.div`
-  font-size: 40px;
+  font-size: 30px;
   color: rgba(255, 255, 255, 0.6);
   display: inline-block;
   margin: 13px 17px 9px 56px;

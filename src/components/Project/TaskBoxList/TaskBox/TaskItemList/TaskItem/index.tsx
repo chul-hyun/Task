@@ -14,7 +14,7 @@ const TitleWrapperStyled = styled.span`
   display: flex;
   flex: 1;
   height: 100%;
-  font-size: 20px;
+  font-size: 16px;
   padding: 0px 0px 0px 20px;
   align-items: center;
   overflow: hidden;

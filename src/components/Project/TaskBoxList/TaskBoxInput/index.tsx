@@ -4,7 +4,7 @@ import { Plus } from 'react-feather';
 
 const Wrapper = styled.div`
   display: flex;
-  width: 364px;
+  width: 320px;
   height: 47px;
   border-radius: 3px;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
