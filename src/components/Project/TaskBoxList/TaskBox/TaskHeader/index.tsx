@@ -1,19 +1,17 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { wrapper } from '../../../../../utils/style-utils';
 import TaskInput from './TaskInput';
+import * as className from './index.scss';
 
-const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 3px 3px 0px 0px;
-`;
+const defaultProps = {
+  color: '#99EA8E',
+};
 
-const HeaderWrapper = styled.div`
-  display: flex;
-  height: 58px;
-  width: 100%;
-`;
+interface Props extends Unpacked<typeof defaultProps> {
+  title: string;
+  taskNum: number;
+}
 
 const HeaderLine = styled.div`
   height: 1px;
@@ -25,8 +23,6 @@ const HeaderLine = styled.div`
 
 const MainWrapper = styled.div`
   display: flex;
-  height: 87px;
-  width: 100%;
 `;
 
 const TitleStyled = styled.div`
@@ -36,6 +32,9 @@ const TitleStyled = styled.div`
   font-size: 20px;
   padding: 0px 0px 0px 21px;
   align-items: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 `;
 
 const TaskNumStyled = styled.div`
@@ -46,45 +45,29 @@ const TaskNumStyled = styled.div`
   color: rgba(44, 49, 58, 0.6);
 `;
 
-const TaskInputWrapper = styled.div`
-  width: 100%;
+const StyledTaskInput = styled(TaskInput)`
+  flex: 1;
   margin: 19px 15px 21px 15px;
 `;
 
-export interface Props {
-  title: string;
-  color: string;
-  taskNum: number;
-}
-
 export interface State {}
 
-export default class TaskHeader extends React.Component<Props, State> {
-  static defaultProps = {
-    color: '#99EA8E',
-  };
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {};
-  }
+export default class TaskHeader extends React.PureComponent<Props, State> {
+  static defaultProps = defaultProps;
 
   public render() {
-    const { children, title, taskNum, color } = this.props;
+    const { title, taskNum, color } = this.props;
     return (
-      <Wrapper>
-        <HeaderWrapper>
+      <div className={className.root}>
+        <div className={className.header}>
           <TitleStyled>{title}</TitleStyled>
           <TaskNumStyled>{taskNum}</TaskNumStyled>
-        </HeaderWrapper>
+        </div>
         <HeaderLine color={color} />
         <MainWrapper>
-          <TaskInputWrapper>
-            <TaskInput color={color} />
-          </TaskInputWrapper>
+          <StyledTaskInput color={color} />
         </MainWrapper>
-      </Wrapper>
+      </div>
     );
   }
 }
