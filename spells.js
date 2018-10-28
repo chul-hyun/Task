@@ -294,6 +294,8 @@ module.exports = [
       'lightblue',
       'uifabric',
       'facebook',
+      'typings',
+      'Ident',
 
       // grid minmax()
       'minmax',
@@ -303,9 +305,21 @@ module.exports = [
       'redux',
       'typesafe-actions',
       'tsx',
+      'Readonly',
+      
+      'flexbox',
+      'mx',
+      'mb',
+      'mr',
+      'py',
+      'pb',
+      'reflexbox',
 
       // css
       'nowrap',
+
+      // typescript
+      'csstype',
     ],
     skipIfMatch: [
       'http(s)?://[^s]*',

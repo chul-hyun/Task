@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   background-color: #2e333d;
 `;
 
-export default name =>
+export default (name: string) =>
   storiesOf(name, module).add('basic', () => (
     <>
       <Wrapper>

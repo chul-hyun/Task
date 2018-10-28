@@ -14,7 +14,7 @@ const Hello = () => (
   </div>
 );
 
-export default name =>
+export default (name: string) =>
   storiesOf(name, module).add('basic', () => (
     <BrowserMock>
       <Hello />

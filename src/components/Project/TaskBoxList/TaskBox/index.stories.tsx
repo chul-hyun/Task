@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   background: linear-gradient(-45deg, #21252c, #2e333d);
 `;
 
-export default name =>
+export default (name: string) =>
   storiesOf(name, module).add('basic', () => {
     const taskTitles = array('task titles', [
       'About what to do 1',

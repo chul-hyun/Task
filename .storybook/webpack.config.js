@@ -1,29 +1,22 @@
 const TSDocgenPlugin = require("react-docgen-typescript-webpack-plugin");
-const createStyledComponentsTransformer = require('typescript-plugin-styled-components')
-  .default;
-
-const styledComponentsTransformer = createStyledComponentsTransformer();
+const common = require('../build/webpack.config.common.js');
+const merge = require('webpack-merge');
 
 module.exports = (baseConfig, env, config) => {
-  config.module.rules.push({
-    test: /\.(ts|tsx)$/,
-    loader: require.resolve("awesome-typescript-loader"),
-    options: {
-      getCustomTransformers: () => ({
-        before: [styledComponentsTransformer],
-      }),
-    },
+  const newConfig = merge(config, common, {
+    // module: {
+    //   rules: [
+    //     {
+    //       test: /\.stories\.tsx?$/,
+    //       loaders: [{
+    //         loader: require.resolve('@storybook/addon-storysource/loader'),
+    //         options: { parser: 'typescript' }
+    //       }],
+    //       enforce: 'pre',
+    //     },
+    //   ]
+    // },
+    plugins:[new TSDocgenPlugin()]
   });
-
-  config.module.rules.push({
-    test: /\.stories\.tsx?$/,
-    loaders: [{
-      loader: require.resolve('@storybook/addon-storysource/loader'),
-      options: { parser: 'typescript' }
-    }],
-    enforce: 'pre',
-  });
-  config.plugins.push(new TSDocgenPlugin()); // optional
-  config.resolve.extensions.push(".ts", ".tsx");
-  return config;
+  return newConfig;
 };

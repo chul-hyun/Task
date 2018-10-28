@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   background: linear-gradient(-45deg, #f0f0f0, #e0e0e0);
 `;
 
-export default name =>
+export default (name: string) =>
   storiesOf(name, module).add('basic', () => (
     <>
       <Wrapper>

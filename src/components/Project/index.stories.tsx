@@ -84,7 +84,7 @@ const component = (
   />
 );
 
-export default name =>
+export default (name: string) =>
   storiesOf(name, module)
     .add('browser', () => <BrowserMock>{component}</BrowserMock>)
     .add('basic', () => component);

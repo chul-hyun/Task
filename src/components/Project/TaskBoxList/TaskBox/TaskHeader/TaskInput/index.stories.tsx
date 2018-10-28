@@ -2,7 +2,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { color } from '@storybook/addon-knobs/react';
 import styled from 'styled-components';
-import Component from './index';
+import TaskInput from './index';
 
 const Wrapper = styled.div`
   width: 300px;
@@ -12,14 +12,14 @@ const Wrapper = styled.div`
   background-color: #fafafa;
 `;
 
-export default name =>
+export default (name: string) =>
   storiesOf(name, module).add('basic', () => (
     <>
       <Wrapper>
-        <Component color={color('color1', Component.defaultProps.color)} />
+        <TaskInput color={color('color1', TaskInput.defaultProps.color)} />
       </Wrapper>
       <Wrapper>
-        <Component color={color('color2', '#E38EEA')} />
+        <TaskInput color={color('color2', '#E38EEA')} />
       </Wrapper>
     </>
   ));
