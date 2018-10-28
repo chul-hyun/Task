@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Plus } from 'react-feather';
 import * as className from './index.scss';
+import L from '../../../../../Layout';
+
 // TODO Helvetica Neue 폰트 적용하기
 
 interface Props {
@@ -16,18 +18,22 @@ export default class InputTask extends React.PureComponent<Props> {
     const { color } = this.props;
 
     return (
-      <div
+      <L.Row
         className={className.root}
         style={{ boxShadow: `0px 0px 6px ${color}` }}>
-        <input
-          className={className.textInput}
-          type="text"
-          placeholder="Add Task"
-        />
-        <div className={className.iconWrapper}>
-          <Plus className={className.icon} />
-        </div>
-      </div>
+        <L.Box flexGrow={1}>
+          <input
+            className={className.textInput}
+            type="text"
+            placeholder="Add Task"
+          />
+        </L.Box>
+        <L.Center width="50px">
+          <L.Box size="24px">
+            <Plus className={className.icon} />
+          </L.Box>
+        </L.Center>
+      </L.Row>
     );
   }
 }
