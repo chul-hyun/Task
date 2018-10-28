@@ -26,10 +26,7 @@ export default class TaskHeader extends React.PureComponent<Props, State> {
       <L.Box height="146px">
         <L.Col className={className.root}>
           <L.Row height="58px">
-            <L.VerticalCenter
-              flexGrow={1}
-              paddingLeft={21}
-              className={className.title}>
+            <L.VerticalCenter paddingLeft={21} className={className.title}>
               {title}
             </L.VerticalCenter>
             <L.Center width="61px" className={className.taskNum}>
@@ -39,7 +36,7 @@ export default class TaskHeader extends React.PureComponent<Props, State> {
           <L.Box height="1px">
             <HeaderLine color={color} />
           </L.Box>
-          <L.HorizontalCenter flexGrow={1} padding="19px 15px">
+          <L.HorizontalCenter padding="19px 15px">
             {/* <TaskInput color={color} /> */}
           </L.HorizontalCenter>
         </L.Col>

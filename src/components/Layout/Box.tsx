@@ -51,6 +51,24 @@ export default class Box extends React.PureComponent<Props, State> {
     return !this.isRow;
   }
 
+  get flexGrow() {
+    const { flexGrow, isRowItem, isColItem, width, height } = this.props;
+    const isFlexGrow = flexGrow !== undefined;
+
+    if (isFlexGrow) {
+      return flexGrow;
+    }
+
+    const isHeight = height !== undefined;
+    const isWidth = width !== undefined;
+
+    if ((isColItem && isHeight === false) || (isRowItem && isWidth === false)) {
+      return 1;
+    }
+
+    return undefined;
+  }
+
   get wrapperStyle(): React.CSSProperties {
     const {
       children,
@@ -64,8 +82,9 @@ export default class Box extends React.PureComponent<Props, State> {
 
     return {
       ...fillStyle,
-      width: isRowItem ? '' : '100%',
       height: isColItem ? '' : '100%',
+      width: isRowItem ? '' : '100%',
+      flexGrow: this.flexGrow,
       ...style,
       ...sizeToStyle(size),
       ...boxStyle,

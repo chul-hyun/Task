@@ -21,7 +21,7 @@ export default class InputTask extends React.PureComponent<Props> {
       <L.Row
         className={className.root}
         style={{ boxShadow: `0px 0px 6px ${color}` }}>
-        <L.Box flexGrow={1}>
+        <L.Box>
           <input
             className={className.textInput}
             type="text"
