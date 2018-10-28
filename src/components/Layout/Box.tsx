@@ -52,15 +52,15 @@ export default class Box extends React.PureComponent<Props, State> {
   }
 
   get flexGrow() {
-    const { flexGrow, isRowItem, isColItem, width, height } = this.props;
+    const { flexGrow, isRowItem, isColItem, width, height, size } = this.props;
     const isFlexGrow = flexGrow !== undefined;
 
     if (isFlexGrow) {
       return flexGrow;
     }
 
-    const isHeight = height !== undefined;
-    const isWidth = width !== undefined;
+    const isHeight = height !== undefined || size !== undefined;
+    const isWidth = width !== undefined || size !== undefined;
 
     if ((isColItem && isHeight === false) || (isRowItem && isWidth === false)) {
       return 1;
