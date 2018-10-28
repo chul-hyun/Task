@@ -1,8 +1,8 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import { wrapper } from '../../../../../utils/style-utils';
 import TaskInput from './TaskInput';
 import * as className from './index.scss';
+import L from '../../../../Layout';
+import HeaderLine from './HeaderLine';
 
 const defaultProps = {
   color: '#99EA8E',
@@ -13,43 +13,6 @@ interface Props extends Unpacked<typeof defaultProps> {
   taskNum: number;
 }
 
-const HeaderLine = styled.div`
-  height: 1px;
-  width: 100%;
-  border-radius: 50%;
-  background-color: ${props => props.color};
-  box-shadow: 0px 0px 5px ${props => props.color};
-`;
-
-const MainWrapper = styled.div`
-  display: flex;
-`;
-
-const TitleStyled = styled.div`
-  display: flex;
-  height: 100%;
-  flex: 1;
-  font-size: 20px;
-  padding: 0px 0px 0px 21px;
-  align-items: center;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-`;
-
-const TaskNumStyled = styled.div`
-  display: flex;
-  width: 61px;
-  justify-content: center;
-  align-items: center;
-  color: rgba(44, 49, 58, 0.6);
-`;
-
-const StyledTaskInput = styled(TaskInput)`
-  flex: 1;
-  margin: 19px 15px 21px 15px;
-`;
-
 export interface State {}
 
 export default class TaskHeader extends React.PureComponent<Props, State> {
@@ -57,17 +20,27 @@ export default class TaskHeader extends React.PureComponent<Props, State> {
 
   public render() {
     const { title, taskNum, color } = this.props;
+
     return (
-      <div className={className.root}>
-        <div className={className.header}>
-          <TitleStyled>{title}</TitleStyled>
-          <TaskNumStyled>{taskNum}</TaskNumStyled>
-        </div>
-        <HeaderLine color={color} />
-        <MainWrapper>
-          <StyledTaskInput color={color} />
-        </MainWrapper>
-      </div>
+      <L.Col className={className.root}>
+        <L.Row height="58px">
+          <L.VerticalCenter
+            flexGrow={1}
+            padding="0px 0px 0px 21px"
+            className={className.title}>
+            {title}
+          </L.VerticalCenter>
+          <L.Center width="61px" className={className.taskNum}>
+            {taskNum}
+          </L.Center>
+        </L.Row>
+        <L.Box height="1px">
+          <HeaderLine color={color} />
+        </L.Box>
+        <L.Box height="87px" padding="19px 15px 21px 15px">
+          <TaskInput color={color} />
+        </L.Box>
+      </L.Col>
     );
   }
 }

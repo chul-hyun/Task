@@ -13,7 +13,7 @@ type BoxStyleProps = Pick<React.CSSProperties, BoxStyleKey>;
 type NonBoxStyleProps = Omit<React.CSSProperties, BoxStyleKey>;
 
 export type Props = {
-  children?: Elements;
+  children?: Elements | string;
   size?: SizeProp;
   className?: string;
   style?: NonBoxStyleProps;
@@ -34,15 +34,6 @@ export default class Box extends React.PureComponent<Props, State> {
 
     const sizeStyle = sizeToStyle(size);
 
-    console.log('sizeStyle', sizeStyle);
-    console.log('boxStyle', boxStyle);
-    console.log('combine', {
-      ...commonStyle,
-      ...style,
-      ...sizeStyle,
-      ...boxStyle,
-    });
-
     return (
       <div
         style={{
@@ -52,13 +43,16 @@ export default class Box extends React.PureComponent<Props, State> {
           ...boxStyle,
         }}
         className={className}>
-        {cloneElements(children, childProps => ({
-          style: {
-            ...commonStyle,
-            ...childProps.style,
-          },
-          ...childProps,
-        }))}
+        {cloneElements({
+          elements: children,
+          getProps: childProps => ({
+            style: {
+              ...commonStyle,
+              ...childProps.style,
+            },
+            ...childProps,
+          }),
+        })}
       </div>
     );
   }
