@@ -23,24 +23,24 @@ export default class TaskHeader extends React.PureComponent<Props, State> {
 
     return (
       // Todo 컴포넌트가 style, className을 받을수 있게
-      <L.Box height="146px">
-        <L.Col className={className.root}>
-          <L.Row height="58px">
-            <L.VerticalCenter paddingLeft={21} className={className.title}>
-              {title}
-            </L.VerticalCenter>
-            <L.Center width="61px" className={className.taskNum}>
-              {taskNum}
-            </L.Center>
-          </L.Row>
-          <L.Box height="1px">
-            <HeaderLine color={color} />
-          </L.Box>
-          <L.HorizontalCenter padding="19px 15px">
-            {/* <TaskInput color={color} /> */}
-          </L.HorizontalCenter>
-        </L.Col>
-      </L.Box>
+      // <L.Box height="146px">
+      <L.Col className={className.root}>
+        <L.Row height="58px">
+          <L.VerticalCenter paddingLeft={21} className={className.title}>
+            {title}
+          </L.VerticalCenter>
+          <L.Center width="61px" className={className.taskNum}>
+            {taskNum}
+          </L.Center>
+        </L.Row>
+        <L.Box height="1px">
+          <HeaderLine color={color} />
+        </L.Box>
+        <L.HorizontalCenter padding="19px 15px">
+          {/* <TaskInput color={color} /> */}
+        </L.HorizontalCenter>
+      </L.Col>
+      // </L.Box>
     );
   }
 }
