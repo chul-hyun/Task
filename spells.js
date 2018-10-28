@@ -296,6 +296,7 @@ module.exports = [
       'facebook',
       'typings',
       'Ident',
+      'ele',
 
       // grid minmax()
       'minmax',

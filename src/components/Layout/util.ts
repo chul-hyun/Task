@@ -49,5 +49,7 @@ export const cloneElements = ({
     return renderReactText(elements);
   }
 
+  console.log(getProps(elements.props));
+
   return React.cloneElement(elements, getProps(elements.props));
 };
