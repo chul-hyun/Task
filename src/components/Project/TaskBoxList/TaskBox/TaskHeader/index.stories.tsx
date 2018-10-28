@@ -7,7 +7,6 @@ import TaskInput from './TaskInput';
 
 const Wrapper = styled.div`
   width: 335px;
-  height: 146px;
   padding: 20px;
   margin: 10px;
   background: linear-gradient(-45deg, #21252c, #2e333d);
@@ -26,10 +25,8 @@ export default (name: string) =>
       <Wrapper>
         <Component taskNum={10} title="test" />
       </Wrapper>
-      <Wrapper>
-        <Component taskNum={3} title="Done">
-          <TaskInput />
-        </Component>
-      </Wrapper>
+      <Component taskNum={3} title="Done">
+        <TaskInput />
+      </Component>
     </>
   ));

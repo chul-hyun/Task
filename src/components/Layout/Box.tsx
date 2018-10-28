@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { SizeProp, cloneElements, Elements, sizeToStyle } from './util';
-
-const isDev = process.env.NODE_ENV === 'development';
+import Empty from './Empty';
+import { SizeProp, cloneElements, Elements, sizeToStyle, isDev } from './util';
 
 type BoxStyleKey =
   | 'flexGrow'
@@ -15,6 +14,7 @@ type BoxStyleKey =
   | 'paddingRight'
   | 'paddingBottom'
   | 'paddingTop';
+
 type BoxStyleProps = Pick<React.CSSProperties, BoxStyleKey>;
 type NonBoxStyleProps = Omit<React.CSSProperties, BoxStyleKey>;
 
@@ -23,6 +23,8 @@ export type Props = {
   size?: SizeProp;
   className?: string;
   style?: NonBoxStyleProps;
+  isColItem: boolean;
+  isRowItem: boolean;
 } & BoxStyleProps;
 
 export interface State {}
@@ -34,55 +36,78 @@ const fillStyle: React.CSSProperties = {
   height: '100%',
 };
 
-const Empty = (
-  <div
-    style={{
-      background: `repeating-linear-gradient(
-        45deg,
-        #606dbc,
-        #606dbc 10px,
-        #465298 10px,
-        #465298 20px
-      )`,
-      color: 'white',
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontWeight: 'bold',
-    }}>
-    Empty
-  </div>
-);
-
-const renderChildren = (children?: Elements) =>
-  cloneElements({
-    elements: children,
-    getProps: childProps => ({
-      ...childProps,
-      style: {
-        ...fillStyle,
-        ...childProps.style,
-      },
-    }),
-  });
-
 export default class Box extends React.PureComponent<Props, State> {
-  render() {
-    const { children, className, style, size, ...boxStyle } = this.props;
+  static defaultProps = {
+    isColItem: false,
+    isRowItem: false,
+  };
 
-    const sizeStyle = sizeToStyle(size);
+  get isRow() {
+    const { flexDirection } = this.props;
+    return flexDirection === 'row' || flexDirection === 'row-reverse';
+  }
 
-    const wrapperStyle = {
+  get isCol() {
+    return !this.isRow;
+  }
+
+  get wrapperStyle(): React.CSSProperties {
+    const {
+      children,
+      className,
+      style,
+      size,
+      isColItem,
+      isRowItem,
+      ...boxStyle
+    } = this.props;
+
+    return {
       ...fillStyle,
+      width: isRowItem ? '' : '100%',
+      height: isColItem ? '' : '100%',
       ...style,
-      ...sizeStyle,
+      ...sizeToStyle(size),
       ...boxStyle,
     };
+  }
+
+  get childStyle(): React.CSSProperties {
+    return {
+      ...fillStyle,
+      height: this.isCol ? '' : '100%',
+      width: this.isRow ? '' : '100%',
+    };
+  }
+
+  get childProps() {
+    return {
+      isColItem: this.isCol,
+      isRowItem: this.isRow,
+    };
+  }
+
+  renderChildren = (children?: Elements) =>
+    cloneElements({
+      elements: children,
+      getProps: childProps => ({
+        ...childProps,
+        ...this.childProps,
+        style: {
+          ...this.childStyle,
+          ...childProps.style,
+        },
+      }),
+    });
+
+  render() {
+    const { children, className } = this.props;
 
     return (
-      <div style={wrapperStyle} className={className}>
+      <div style={this.wrapperStyle} className={className}>
         {children === undefined && isDev
-          ? renderChildren(Empty)
-          : renderChildren(children)}
+          ? this.renderChildren(Empty)
+          : this.renderChildren(children)}
       </div>
     );
   }

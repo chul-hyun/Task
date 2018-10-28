@@ -53,3 +53,5 @@ export const cloneElements = ({
 
   return React.cloneElement(elements, getProps(elements.props));
 };
+
+export const isDev = process.env.NODE_ENV === 'development';
