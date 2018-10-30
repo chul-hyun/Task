@@ -21,12 +21,10 @@ export const checkChildrenType = (props: {
   });
 };
 
-const withCheckBoxComponentChildren = <OrgProps, DefaultProps = {} | undefined>(
-  defaultProps?: DefaultProps,
-) => (WrappedComponent: React.ComponentType<OrgProps>) =>
-  class extends React.PureComponent<OrgProps> {
-    static defaultProps?: DefaultProps = defaultProps;
-
+const withCheckBoxComponentChildren = <OrgProps, JSXProps = OrgProps>() => (
+  WrappedComponent: React.ComponentType<OrgProps>,
+) =>
+  class extends React.PureComponent<JSXProps> {
     render() {
       if (isDev) {
         checkChildrenType(this.props);

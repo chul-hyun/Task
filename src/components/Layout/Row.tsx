@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Box, { Props as BoxProps } from './Box';
 import withIsBoxComponent from './withIsBoxComponent';
+import withCheckBoxComponentChildren from './withCheckBoxComponentChildren';
 
 export type Props = Omit<BoxProps, 'flexDirection'>;
 
@@ -12,4 +13,6 @@ class Row extends React.PureComponent<Props, State> {
   }
 }
 
-export default withIsBoxComponent<Props>()(Row);
+export default withCheckBoxComponentChildren<Props>()(
+  withIsBoxComponent<Props>()(Row),
+);

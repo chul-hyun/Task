@@ -13,4 +13,6 @@ class Col extends React.PureComponent<Props, State> {
   }
 }
 
-export default withIsBoxComponent<Props>()(Col);
+export default withCheckBoxComponentChildren<Props>()(
+  withIsBoxComponent<Props>()(Col),
+);
