@@ -22,7 +22,7 @@ export default class TaskHeader extends React.PureComponent<Props, State> {
     const { title, taskNum, color } = this.props;
 
     return (
-      // Todo 컴포넌트가 style, className을 받을수 있게
+      // Todo 컴포넌트가 style, className을 받을수 있게 (컴포넌트의 유연성)
       // <L.Box height="146px">
       <L.Col className={className.root}>
         <L.Row height="58px">
