@@ -1,6 +1,8 @@
 import * as React from 'react';
 import Empty from './Empty';
-import { SizeProp, cloneElements, Elements, sizeToStyle, isDev } from './util';
+import { SizeProp, cloneElements, sizeToStyle } from './utils';
+import { isDev } from '../utils';
+import BoxComponent from '../BoxComponent';
 
 type BoxStyleKey =
   | 'flexGrow'
@@ -19,7 +21,7 @@ type BoxStyleProps = Pick<React.CSSProperties, BoxStyleKey>;
 type NonBoxStyleProps = Omit<React.CSSProperties, BoxStyleKey>;
 
 export type Props = {
-  children?: Elements;
+  children?: React.ReactNode;
   size?: SizeProp;
   className?: string;
   style?: NonBoxStyleProps;
@@ -36,7 +38,8 @@ const fillStyle: React.CSSProperties = {
   height: '100%',
 };
 
-export default class Box extends React.PureComponent<Props, State> {
+export default class Box extends React.PureComponent<Props, State>
+  implements BoxComponent {
   static defaultProps = {
     isColItem: false,
     isRowItem: false,
@@ -106,9 +109,9 @@ export default class Box extends React.PureComponent<Props, State> {
     };
   }
 
-  renderChildren = (children?: Elements) =>
+  renderChildren = (children?: React.ReactNode) =>
     cloneElements({
-      elements: children,
+      element: children,
       getProps: childProps => ({
         ...childProps,
         ...this.childProps,
