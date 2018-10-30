@@ -1,13 +1,16 @@
 import * as React from 'react';
 import Box, { Props as BoxProps } from './Box';
+import withIsBoxComponent from './withIsBoxComponent';
+import withCheckBoxComponentChildren from './withCheckBoxComponentChildren';
 
-export type Props = Omit<
-  JSX.LibraryManagedAttributes<typeof Box, BoxProps>,
-  'flexDirection'
->;
+export type Props = Omit<BoxProps, 'flexDirection'>;
 
 export interface State {}
 
-const Col = (props: Props) => <Box flexDirection="column" {...props} />;
+class Col extends React.PureComponent<Props, State> {
+  render() {
+    return <Box flexDirection="column" {...this.props} />;
+  }
+}
 
-export default Col;
+export default withIsBoxComponent<Props>()(Col);

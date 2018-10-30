@@ -1,13 +1,15 @@
 import * as React from 'react';
 import Box, { Props as BoxProps } from './Box';
+import withIsBoxComponent from './withIsBoxComponent';
 
-export type Props = Omit<
-  JSX.LibraryManagedAttributes<typeof Box, BoxProps>,
-  'alignItems'
->;
+export type Props = Omit<BoxProps, 'alignItems'>;
 
 export interface State {}
 
-const VerticalCenter = (props: Props) => <Box alignItems="center" {...props} />;
+class VerticalCenter extends React.PureComponent<Props, State> {
+  render() {
+    return <Box alignItems="center" {...this.props} />;
+  }
+}
 
-export default VerticalCenter;
+export default withIsBoxComponent<Props>()(VerticalCenter);

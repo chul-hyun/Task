@@ -1,13 +1,15 @@
 import * as React from 'react';
 import Box, { Props as BoxProps } from './Box';
+import withIsBoxComponent from './withIsBoxComponent';
 
-export type Props = Omit<
-  JSX.LibraryManagedAttributes<typeof Box, BoxProps>,
-  'flexDirection'
->;
+export type Props = Omit<BoxProps, 'flexDirection'>;
 
 export interface State {}
 
-const Row = (props: Props) => <Box flexDirection="row" {...props} />;
+class Row extends React.PureComponent<Props, State> {
+  render() {
+    return <Box flexDirection="row" {...this.props} />;
+  }
+}
 
-export default Row;
+export default withIsBoxComponent<Props>()(Row);

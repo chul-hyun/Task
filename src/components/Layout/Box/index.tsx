@@ -2,7 +2,7 @@ import * as React from 'react';
 import Empty from './Empty';
 import { SizeProp, cloneElements, sizeToStyle } from './utils';
 import { isDev } from '../utils';
-import BoxComponent from '../BoxComponent';
+import withIsBoxComponent from '../withIsBoxComponent';
 
 type BoxStyleKey =
   | 'flexGrow'
@@ -20,14 +20,18 @@ type BoxStyleKey =
 type BoxStyleProps = Pick<React.CSSProperties, BoxStyleKey>;
 type NonBoxStyleProps = Omit<React.CSSProperties, BoxStyleKey>;
 
+export type DefaultProps = {
+  isColItem: boolean;
+  isRowItem: boolean;
+};
+
 export type Props = {
-  children?: React.ReactNode;
+  children: React.ReactNode;
   size?: SizeProp;
   className?: string;
   style?: NonBoxStyleProps;
-  isColItem: boolean;
-  isRowItem: boolean;
-} & BoxStyleProps;
+} & BoxStyleProps &
+  Partial<DefaultProps>;
 
 export interface State {}
 
@@ -38,23 +42,22 @@ const fillStyle: React.CSSProperties = {
   height: '100%',
 };
 
-export default class Box extends React.PureComponent<Props, State>
-  implements BoxComponent {
-  static defaultProps = {
+class Box extends React.PureComponent<Props & Required<DefaultProps>, State> {
+  static defaultProps: DefaultProps = {
     isColItem: false,
     isRowItem: false,
   };
 
-  get isRow() {
+  private get isRow() {
     const { flexDirection } = this.props;
     return flexDirection === 'row' || flexDirection === 'row-reverse';
   }
 
-  get isCol() {
+  private get isCol() {
     return !this.isRow;
   }
 
-  get flexGrow() {
+  private get flexGrow() {
     const { flexGrow, isRowItem, isColItem, width, height, size } = this.props;
     const isFlexGrow = flexGrow !== undefined;
 
@@ -72,7 +75,7 @@ export default class Box extends React.PureComponent<Props, State>
     return undefined;
   }
 
-  get wrapperStyle(): React.CSSProperties {
+  private get wrapperStyle(): React.CSSProperties {
     const {
       children,
       className,
@@ -94,7 +97,7 @@ export default class Box extends React.PureComponent<Props, State>
     };
   }
 
-  get childStyle(): React.CSSProperties {
+  private get childStyle(): React.CSSProperties {
     return {
       ...fillStyle,
       height: this.isCol ? '' : '100%',
@@ -102,7 +105,7 @@ export default class Box extends React.PureComponent<Props, State>
     };
   }
 
-  get childProps() {
+  private get childProps() {
     return {
       isColItem: this.isCol,
       isRowItem: this.isRow,
@@ -134,3 +137,5 @@ export default class Box extends React.PureComponent<Props, State>
     );
   }
 }
+
+export default withIsBoxComponent<Props & Required<DefaultProps>, Props>()(Box);
