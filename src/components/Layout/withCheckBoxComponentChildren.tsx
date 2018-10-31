@@ -10,12 +10,13 @@ export const checkChildrenType = (props: {
 
   childList.forEach(child => {
     if (
-      children !== null ||
-      children !== undefined ||
-      'isBoxComponent' in children === false
+      child !== null ||
+      child !== undefined ||
+      'isBoxComponent' in child === false
     ) {
       console.error(
         'Col, Row 의 자식은 BoxComponent | BoxComponent[] 타입이여야 합니다.',
+        child,
       );
     }
   });

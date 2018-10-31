@@ -6,7 +6,13 @@ const withIsBoxComponent = <OrgProps, JSXProps = OrgProps>() => (
   WrappedComponent: React.ComponentType<OrgProps>,
 ) =>
   class extends React.Component<JSXProps> implements BoxComponent {
-    isBoxComponent: boolean = true;
+    constructor(props: JSXProps) {
+      super(props);
+
+      this.isBoxComponent = true;
+    }
+
+    public isBoxComponent: boolean;
 
     render() {
       return <WrappedComponent {...this.props} />;
